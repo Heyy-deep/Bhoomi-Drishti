@@ -7,7 +7,6 @@ import DelayPredictorModule from './components/DelayPredictorModule';
 import MobileFieldInspectionModule from './components/MobileFieldInspectionModule';
 import PublicPortalModule from './components/PublicPortalModule';
 import ProposalSubmissionModal from './components/ProposalSubmissionModal';
-import HackathonPitchModal from './components/HackathonPitchModal';
 import AuthScreen from './components/AuthScreen';
 import { INITIAL_PARCELS } from './data/parcelsData';
 import './App.css';
@@ -17,7 +16,6 @@ export default function App() {
   const [activeModule, setActiveModule] = useState('mis'); // 'mis' | 'gis' | 'workflow' | 'predictor' | 'mobile' | 'public'
   const [selectedParcel, setSelectedParcel] = useState(INITIAL_PARCELS[0]);
   const [language, setLanguage] = useState('EN'); // 'EN' | 'HI'
-  const [isPitchOpen, setIsPitchOpen] = useState(false);
   const [isProposalOpen, setIsProposalOpen] = useState(false);
   
   const [user, setUser] = useState(() => {
@@ -55,7 +53,6 @@ export default function App() {
         setActiveModule={setActiveModule}
         language={language}
         setLanguage={setLanguage}
-        onOpenPitch={() => setIsPitchOpen(true)}
         onOpenProposal={() => setIsProposalOpen(true)}
         user={user}
         onLogout={handleLogout}
@@ -115,12 +112,6 @@ export default function App() {
         isOpen={isProposalOpen}
         onClose={() => setIsProposalOpen(false)}
         onAddProposal={handleAddProposal}
-      />
-
-      {/* Presentation Pitch Deck Modal */}
-      <HackathonPitchModal
-        isOpen={isPitchOpen}
-        onClose={() => setIsPitchOpen(false)}
       />
     </div>
   );

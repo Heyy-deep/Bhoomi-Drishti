@@ -1,7 +1,7 @@
 import React from 'react';
-import { MapPin, Cpu, Activity, ShieldCheck, Globe, Presentation, BarChart3, PlusCircle, Smartphone, LogOut } from 'lucide-react';
+import { MapPin, Cpu, Activity, ShieldCheck, Globe, BarChart3, PlusCircle, Smartphone, LogOut } from 'lucide-react';
 
-export default function Navbar({ activeModule, setActiveModule, language, setLanguage, onOpenPitch, onOpenProposal, user, onLogout }) {
+export default function Navbar({ activeModule, setActiveModule, language, setLanguage, onOpenProposal, user, onLogout }) {
   return (
     <header className="navbar-header">
       <div className="navbar-container">
@@ -87,12 +87,6 @@ export default function Navbar({ activeModule, setActiveModule, language, setLan
           >
             <Globe className="lang-icon" />
             <span>{language === 'EN' ? 'HI' : 'EN'}</span>
-          </button>
-
-          {/* Hackathon Pitch Modal Trigger */}
-          <button className="pitch-btn" onClick={onOpenPitch}>
-            <Presentation className="pitch-icon" />
-            <span>SIH Pitch</span>
           </button>
 
           {/* User profile & Logout */}

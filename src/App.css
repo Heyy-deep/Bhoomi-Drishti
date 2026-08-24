@@ -677,7 +677,7 @@
 
 .calc-disclaimer { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
 
-/* Hackathon Pitch Modal */
+/* Proposal Modal Shared Styles */
 .pitch-modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; }
 .pitch-modal-container { background: #0d1117; border: 1px solid var(--border-glass); border-radius: 16px; width: 100%; max-width: 900px; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); }
 
@@ -689,53 +689,8 @@
 .close-modal-btn { background: transparent; border: none; color: var(--text-muted); cursor: pointer; }
 .close-modal-btn:hover { color: #fff; }
 
-.pitch-slide-tabs { display: flex; background: rgba(0, 0, 0, 0.4); border-bottom: 1px solid var(--border-glass); padding: 4px 12px; gap: 4px; overflow-x: auto; }
-.slide-tab-btn { background: transparent; border: none; color: var(--text-muted); padding: 8px 14px; font-size: 12px; font-weight: 600; cursor: pointer; border-radius: 6px; white-space: nowrap; }
-.slide-tab-btn.active { background: var(--accent-purple); color: #fff; }
-
 .pitch-slide-viewport { padding: 24px; flex: 1; overflow-y: auto; }
-.slide-title-banner { margin-bottom: 20px; }
-.slide-title-banner h3 { font-family: var(--font-heading); font-size: 22px; font-weight: 800; }
-.slide-title-banner p { font-size: 13px; color: var(--text-muted); }
-
-.pitch-callout { padding: 14px; border-radius: 8px; margin-bottom: 16px; }
-.pitch-callout.red { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; }
-.pitch-callout h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-.pitch-callout p { font-size: 13px; line-height: 1.5; }
-
 .pitch-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.pitch-box { background: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-glass); padding: 14px; border-radius: 8px; }
-.pitch-box h4 { font-size: 14px; font-weight: 700; color: var(--accent-blue); margin-bottom: 4px; }
-.pitch-box p { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
-
-.arch-flow-diagram { display: flex; align-items: center; gap: 8px; justify-content: space-between; overflow-x: auto; padding: 10px 0; }
-.arch-card { background: rgba(22, 27, 34, 0.8); border: 1px solid var(--border-glass); padding: 14px; border-radius: 10px; width: 180px; flex-shrink: 0; text-align: center; }
-.arch-num { font-size: 10px; font-weight: 800; color: var(--accent-purple); background: rgba(139, 92, 246, 0.2); padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 6px; }
-.arch-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-.arch-card p { font-size: 11px; color: var(--text-muted); line-height: 1.3; }
-.arch-arrow { font-weight: 700; color: var(--text-dim); }
-
-.tech-stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.tech-card { background: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-glass); padding: 16px; border-radius: 10px; }
-.tech-icon { width: 24px; height: 24px; color: var(--accent-gold); margin-bottom: 8px; }
-.tech-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-.tech-card p { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
-
-.metrics-hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
-.m-card { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 16px; border-radius: 10px; text-align: center; }
-.m-val { font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: var(--accent-green); }
-.m-lbl { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
-
-.roadmap-box { background: rgba(22, 27, 34, 0.6); border: 1px solid var(--border-glass); padding: 16px; border-radius: 10px; }
-.roadmap-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--accent-purple); }
-.roadmap-box ul { list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--text-muted); }
-
-.pitch-modal-footer { padding: 16px 24px; border-top: 1px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; background: rgba(22, 27, 34, 0.5); }
-.slide-counter { font-size: 13px; color: var(--text-muted); }
-.footer-btns { display: flex; gap: 8px; }
-.nav-slide-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-glass); color: var(--text-main); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; }
-.nav-slide-btn.primary { background: var(--accent-purple); color: #fff; border: none; }
-.nav-slide-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* AuthScreen Styles */
 .auth-container {
