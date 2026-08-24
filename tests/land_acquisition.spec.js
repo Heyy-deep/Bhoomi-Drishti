@@ -2,6 +2,14 @@ import { test, expect } from '@playwright/test';
 
 test.describe('BhoomiDrishti — Land Acquisition Tracking System (SIH26016)', () => {
 
+  test.beforeEach(async ({ page }) => {
+    await page.goto('http://localhost:5173/');
+    // Click the Quick Login button for NHAI Officer to bypass auth
+    await page.getByRole('button', { name: /NHAI Officer/i }).click();
+    await page.getByRole('button', { name: /Sign In to Dashboard/i }).click();
+    // Wait for the dashboard to load
+    await expect(page.getByText('BhoomiDrishti')).toBeVisible();
+  });
   test('Page loads correctly with title and all navigation tabs', async ({ page }) => {
     await page.goto('http://localhost:5173/');
     await expect(page).toHaveTitle(/BhoomiDrishti/);
@@ -29,7 +37,7 @@ test.describe('BhoomiDrishti — Land Acquisition Tracking System (SIH26016)', (
     await expect(page.getByText(/Custom MIS Report \(PDF\) generated/i)).toBeVisible();
   });
 
-  test('Module 1: GIS Tracker displays stats, map, and parcel details', async ({ page }) => {
+  test('Module 1: GIS Tracker displays stats, map, and parcel details with State & District filters', async ({ page }) => {
     await page.goto('http://localhost:5173/');
 
     // Click on GIS Tracker tab
@@ -39,10 +47,20 @@ test.describe('BhoomiDrishti — Land Acquisition Tracking System (SIH26016)', (
     await expect(page.locator('.stat-label').filter({ hasText: 'Total Parcels' })).toBeVisible();
     await expect(page.locator('.stat-label').filter({ hasText: 'Section 4 (Notification)' })).toBeVisible();
 
-    // Search for a Khasra number
-    await page.getByPlaceholder(/Search Khasra No/i).fill('142/1A');
-    await expect(page.getByText('Khasra No. 142/1A')).toBeVisible();
-    await expect(page.getByText('Rameshwar Patil')).toBeVisible();
+    // Test State Filter (e.g. select Gujarat)
+    const stateSelect = page.locator('select[title="Filter by State"]');
+    await expect(stateSelect).toBeVisible();
+    await stateSelect.selectOption('Gujarat');
+
+    // Verify district options are updated for Gujarat
+    const districtSelect = page.locator('select[title="Filter by District"]');
+    await expect(districtSelect).toBeVisible();
+    await districtSelect.selectOption('Ahmedabad');
+
+    // Search for a Khasra number in Ahmedabad
+    await page.getByPlaceholder(/Search Khasra No/i).fill('412/2B');
+    await expect(page.getByText('Khasra No. 412/2B')).toBeVisible();
+    await expect(page.getByText('Harshad Bhai Patel')).toBeVisible();
   });
 
   test('Module 2: Workflow Engine document verification, document vault, and SLA queue', async ({ page }) => {

@@ -13,15 +13,34 @@ L.Icon.Default.mergeOptions({
 });
 
 export default function GisTrackerModule({ parcels, selectedParcel, setSelectedParcel, language }) {
-  const [stageFilter, setStageFilter] = useState('ALL');
+  const [stateFilter, setStateFilter] = useState('ALL');
   const [districtFilter, setDistrictFilter] = useState('ALL');
+  const [stageFilter, setStageFilter] = useState('ALL');
   const [riskFilter, setRiskFilter] = useState('ALL');
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Dynamically derive unique states and districts from parcels data
+  const availableStates = Array.from(new Set(parcels.map(p => p.state).filter(Boolean)));
+  const availableDistricts = Array.from(
+    new Set(
+      parcels
+        .filter(p => stateFilter === 'ALL' || p.state === stateFilter)
+        .map(p => p.district)
+        .filter(Boolean)
+    )
+  );
+
+  const handleStateChange = (e) => {
+    const newState = e.target.value;
+    setStateFilter(newState);
+    setDistrictFilter('ALL'); // Reset district filter when state changes
+  };
+
   // Filter logic
   const filteredParcels = parcels.filter(parcel => {
-    if (stageFilter !== 'ALL' && parcel.stage !== stageFilter) return false;
+    if (stateFilter !== 'ALL' && parcel.state !== stateFilter) return false;
     if (districtFilter !== 'ALL' && parcel.district !== districtFilter) return false;
+    if (stageFilter !== 'ALL' && parcel.stage !== stageFilter) return false;
     if (riskFilter !== 'ALL' && parcel.riskLevel !== riskFilter) return false;
     if (searchQuery.trim() !== '') {
       const q = searchQuery.toLowerCase();
@@ -29,24 +48,39 @@ export default function GisTrackerModule({ parcels, selectedParcel, setSelectedP
         parcel.khasraNo.toLowerCase().includes(q) ||
         parcel.ownerName.toLowerCase().includes(q) ||
         parcel.id.toLowerCase().includes(q) ||
-        parcel.village.toLowerCase().includes(q)
+        parcel.village.toLowerCase().includes(q) ||
+        parcel.district.toLowerCase().includes(q) ||
+        parcel.state.toLowerCase().includes(q)
       );
     }
     return true;
   });
 
-  // Calculate center of map based on selected parcel or default Nagpur center
-  const mapCenter = selectedParcel ? selectedParcel.coordinates : [20.5937, 78.9629];
-  const mapZoom = selectedParcel ? 12 : 7;
+  // Auto-select single matching parcel for seamless UX when search/filter isolates one parcel
+  React.useEffect(() => {
+    if (filteredParcels.length === 1 && selectedParcel?.id !== filteredParcels[0].id) {
+      setSelectedParcel(filteredParcels[0]);
+    }
+  }, [filteredParcels, selectedParcel, setSelectedParcel]);
+
+  // Calculate center of map based on selected parcel or first filtered parcel or default India center
+  const mapCenter = selectedParcel
+    ? selectedParcel.coordinates
+    : filteredParcels.length > 0
+    ? filteredParcels[0].coordinates
+    : [20.5937, 78.9629];
+  const mapZoom = selectedParcel ? 12 : stateFilter !== 'ALL' ? 9 : 6;
+
+  const totalDistrictsCount = Array.from(new Set(parcels.map(p => p.district))).length;
 
   return (
     <div className="module-layout">
       {/* Top Stage Statistics Bar */}
       <div className="stats-grid">
-        <div className="stat-card" onClick={() => setStageFilter('ALL')}>
+        <div className="stat-card" onClick={() => { setStageFilter('ALL'); setStateFilter('ALL'); setDistrictFilter('ALL'); }}>
           <div className="stat-label">{language === 'HI' ? 'कुल भूमि खसरा (Parcels)' : 'Total Parcels'}</div>
           <div className="stat-val">{parcels.length}</div>
-          <div className="stat-sub">Across 3 Districts</div>
+          <div className="stat-sub">{language === 'HI' ? `${availableStates.length} राज्य एवं ${totalDistrictsCount} ज़िले` : `Across ${availableStates.length} States & ${totalDistrictsCount} Districts`}</div>
         </div>
 
         <div className={`stat-card border-amber ${stageFilter === 'Section 4' ? 'active' : ''}`} onClick={() => setStageFilter('Section 4')}>
@@ -84,7 +118,7 @@ export default function GisTrackerModule({ parcels, selectedParcel, setSelectedP
               <Search className="search-icon" />
               <input
                 type="text"
-                placeholder={language === 'HI' ? 'खसरा संख्या, नाम या आईडी खोजें...' : 'Search Khasra No, Owner, or Parcel ID...'}
+                placeholder={language === 'HI' ? 'खसरा संख्या, राज्य, ज़िला या नाम खोजें...' : 'Search Khasra No, State, District, Owner...'}
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
               />
@@ -92,15 +126,25 @@ export default function GisTrackerModule({ parcels, selectedParcel, setSelectedP
 
             <div className="filter-group">
               <Filter className="filter-icon" />
-              <select value={districtFilter} onChange={e => setDistrictFilter(e.target.value)}>
-                <option value="ALL">All Districts</option>
-                <option value="Nagpur">Nagpur</option>
-                <option value="Pune">Pune</option>
-                <option value="Thane">Thane</option>
+              {/* State Filter Dropdown (First) */}
+              <select value={stateFilter} onChange={handleStateChange} title="Filter by State">
+                <option value="ALL">{language === 'HI' ? 'सभी राज्य (All States)' : 'All States'}</option>
+                {availableStates.map(st => (
+                  <option key={st} value={st}>{st}</option>
+                ))}
               </select>
 
-              <select value={riskFilter} onChange={e => setRiskFilter(e.target.value)}>
-                <option value="ALL">All Risk Levels</option>
+              {/* District Filter Dropdown (Second - Cascading) */}
+              <select value={districtFilter} onChange={e => setDistrictFilter(e.target.value)} title="Filter by District">
+                <option value="ALL">{language === 'HI' ? 'सभी ज़िले (All Districts)' : 'All Districts'}</option>
+                {availableDistricts.map(dist => (
+                  <option key={dist} value={dist}>{dist}</option>
+                ))}
+              </select>
+
+              {/* Risk Level Filter Dropdown (Third) */}
+              <select value={riskFilter} onChange={e => setRiskFilter(e.target.value)} title="Filter by Risk Level">
+                <option value="ALL">{language === 'HI' ? 'सभी जोखिम स्तर (All Risk Levels)' : 'All Risk Levels'}</option>
                 <option value="CRITICAL">Critical Risk (≥70%)</option>
                 <option value="MEDIUM">Medium Risk</option>
                 <option value="LOW">Low Risk</option>

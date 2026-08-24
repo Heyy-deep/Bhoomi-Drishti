@@ -340,6 +340,208 @@ export const INITIAL_PARCELS = [
       { date: "2025-07-10", stage: "Section 4", note: "Section 4 gazette notification", officer: "Dy. Collector Thane" },
       { date: "2025-09-30", stage: "Section 11", note: "R&R hearing requested by residents", officer: "Dy. Collector Thane" }
     ]
+  },
+  {
+    id: "LND-GJ-2026-0201",
+    khasraNo: "412/2B",
+    ownerName: "Harshad Bhai Patel",
+    ownerContact: "+91 98250 99123",
+    village: "Dholera",
+    district: "Ahmedabad",
+    state: "Gujarat",
+    project: "Dholera Special Investment Region (DSIR)",
+    areaAcquired: "5.60 Ha",
+    landType: "Agricultural (Irrigated)",
+    stage: "Section 19",
+    stageCode: 3,
+    stageProgress: 80,
+    possessionStatus: "Final Declaration Awarded (80%)",
+    affectedFamilies: 5,
+    displacedFamilies: 1,
+    rrStatus: "Industrial Plot Allotment Issued",
+    coordinates: [22.2500, 72.1833],
+    polygon: [
+      [22.2520, 72.1810],
+      [22.2540, 72.1845],
+      [22.2490, 72.1860],
+      [22.2480, 72.1820]
+    ],
+    compensationTotal: 18500000,
+    disbursedAmount: 12000000,
+    assignedOfficer: "Shri J. K. Solanki (SLAO Dholera)",
+    officerId: "OFF-AMD-01",
+    slaStatus: "HEALTHY",
+    daysInStage: 28,
+    slaDeadlineDays: 45,
+    riskScore: 22,
+    riskLevel: "LOW",
+    riskFactors: [],
+    documents: {
+      titleDeed: "VERIFIED",
+      sevenTwelveExtract: "VERIFIED",
+      encumbranceCert: "VERIFIED",
+      bankDetails: "VERIFIED",
+      socialImpactReport: "VERIFIED"
+    },
+    docRepository: [
+      { name: "Dholera_Title_Deed_412_2B.pdf", version: "v1.0", sha256: "9912ab3c...e881", date: "2026-01-15", uploader: "SLAO Ahmedabad", eSign: "VERIFIED" }
+    ],
+    timeline: [
+      { date: "2025-08-12", stage: "Section 4", note: "Section 4 notice issued", officer: "SLAO Dholera" },
+      { date: "2025-11-04", stage: "Section 11", note: "Public hearing closed with consensus", officer: "SLAO Dholera" },
+      { date: "2026-01-15", stage: "Section 19", note: "Section 19 Declaration gazetted", officer: "Collector Ahmedabad" }
+    ]
+  },
+  {
+    id: "LND-GJ-2026-0202",
+    khasraNo: "98/1",
+    ownerName: "Bhaveshkumar Shah",
+    ownerContact: "+91 94261 44321",
+    village: "Sachin",
+    district: "Surat",
+    state: "Gujarat",
+    project: "Mumbai-Ahmedabad High Speed Rail (Bullet Train)",
+    areaAcquired: "2.10 Ha",
+    landType: "Commercial Boundary",
+    stage: "Disbursement",
+    stageCode: 4,
+    stageProgress: 100,
+    possessionStatus: "Possession Handed Over (100%)",
+    affectedFamilies: 2,
+    displacedFamilies: 0,
+    rrStatus: "N/A",
+    coordinates: [21.0833, 72.8833],
+    polygon: [
+      [21.0850, 72.8815],
+      [21.0865, 72.8845],
+      [21.0820, 72.8855],
+      [21.0810, 72.8825]
+    ],
+    compensationTotal: 24000000,
+    disbursedAmount: 24000000,
+    assignedOfficer: "Smt. Neeta Mehta (Dy. Collector Surat)",
+    officerId: "OFF-SRT-02",
+    slaStatus: "HEALTHY",
+    daysInStage: 8,
+    slaDeadlineDays: 30,
+    riskScore: 10,
+    riskLevel: "LOW",
+    riskFactors: [],
+    documents: {
+      titleDeed: "VERIFIED",
+      sevenTwelveExtract: "VERIFIED",
+      encumbranceCert: "VERIFIED",
+      bankDetails: "VERIFIED",
+      socialImpactReport: "VERIFIED"
+    },
+    docRepository: [
+      { name: "Surat_BulletTrain_Receipt.pdf", version: "v1.0", sha256: "4410e98a...22b1", date: "2026-02-12", uploader: "Treasury Officer", eSign: "VERIFIED" }
+    ],
+    timeline: [
+      { date: "2025-06-20", stage: "Section 4", note: "Section 4 preliminary gazette", officer: "Dy. Collector Surat" },
+      { date: "2026-02-12", stage: "Disbursement", note: "100% DBT payout completed", officer: "Treasury Officer" }
+    ]
+  },
+  {
+    id: "LND-KA-2026-0301",
+    khasraNo: "154/3",
+    ownerName: "Venkatesh Gowda",
+    ownerContact: "+91 99001 88776",
+    village: "Yelahanka",
+    district: "Bengaluru Urban",
+    state: "Karnataka",
+    project: "Bengaluru Peripheral Ring Road Phase II",
+    areaAcquired: "3.40 Ha",
+    landType: "Agricultural",
+    stage: "Section 11",
+    stageCode: 2,
+    stageProgress: 45,
+    possessionStatus: "Survey Verification (45%)",
+    affectedFamilies: 7,
+    displacedFamilies: 2,
+    rrStatus: "SIA Public Hearing Pending",
+    coordinates: [13.1000, 77.5933],
+    polygon: [
+      [13.1020, 77.5910],
+      [13.1040, 77.5945],
+      [13.0990, 77.5960],
+      [13.0980, 77.5920]
+    ],
+    compensationTotal: 21000000,
+    disbursedAmount: 0,
+    assignedOfficer: "Shri M. N. Shivakumar (SLAO BDA)",
+    officerId: "OFF-BLR-01",
+    slaStatus: "WARNING",
+    daysInStage: 52,
+    slaDeadlineDays: 60,
+    riskScore: 65,
+    riskLevel: "MEDIUM",
+    riskFactors: [
+      "Land title mutation entry delayed at Tahsildar office"
+    ],
+    documents: {
+      titleDeed: "VERIFIED",
+      sevenTwelveExtract: "VERIFIED",
+      encumbranceCert: "PENDING",
+      bankDetails: "VERIFIED",
+      socialImpactReport: "IN_PROGRESS"
+    },
+    docRepository: [
+      { name: "Yelahanka_PRR_Sec11_Notice.pdf", version: "v1.0", sha256: "88a1239c...99d0", date: "2026-01-05", uploader: "SLAO BDA", eSign: "VERIFIED" }
+    ],
+    timeline: [
+      { date: "2025-10-10", stage: "Section 4", note: "Section 4 preliminary gazette", officer: "SLAO BDA" },
+      { date: "2026-01-05", stage: "Section 11", note: "Section 11 survey initiated", officer: "SLAO BDA" }
+    ]
+  },
+  {
+    id: "LND-UP-2026-0401",
+    khasraNo: "782/1",
+    ownerName: "Chaudhary Rampal Singh",
+    ownerContact: "+91 98370 11223",
+    village: "Jewar",
+    district: "Gautam Buddha Nagar",
+    state: "Uttar Pradesh",
+    project: "Noida International Airport (Jewar Runway Phase 2)",
+    areaAcquired: "6.80 Ha",
+    landType: "Agricultural (Irrigated)",
+    stage: "Section 4",
+    stageCode: 1,
+    stageProgress: 30,
+    possessionStatus: "Objections Invitation Phase (30%)",
+    affectedFamilies: 12,
+    displacedFamilies: 4,
+    rrStatus: "R&R Township Site Inspection Ongoing",
+    coordinates: [28.1833, 77.5500],
+    polygon: [
+      [28.1850, 77.5480],
+      [28.1870, 77.5520],
+      [28.1810, 77.5535],
+      [28.1800, 77.5490]
+    ],
+    compensationTotal: 34000000,
+    disbursedAmount: 0,
+    assignedOfficer: "Shri R. P. Bhati (ADM Land Acquisition Noida)",
+    officerId: "OFF-GBN-02",
+    slaStatus: "HEALTHY",
+    daysInStage: 18,
+    slaDeadlineDays: 30,
+    riskScore: 30,
+    riskLevel: "LOW",
+    riskFactors: [],
+    documents: {
+      titleDeed: "VERIFIED",
+      sevenTwelveExtract: "VERIFIED",
+      encumbranceCert: "VERIFIED",
+      bankDetails: "IN_PROGRESS",
+      socialImpactReport: "IN_PROGRESS"
+    },
+    docRepository: [
+      { name: "Jewar_Airport_Phase2_Sec4.pdf", version: "v1.0", sha256: "aa44119e...8801", date: "2026-02-05", uploader: "ADM Noida", eSign: "VERIFIED" }
+    ],
+    timeline: [
+      { date: "2026-02-05", stage: "Section 4", note: "UP Gazette Section 4 notification issued for Jewar Runway 2", officer: "ADM Noida" }
+    ]
   }
 ];
 
