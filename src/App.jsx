@@ -8,6 +8,7 @@ import MobileFieldInspectionModule from './components/MobileFieldInspectionModul
 import PublicPortalModule from './components/PublicPortalModule';
 import ProposalSubmissionModal from './components/ProposalSubmissionModal';
 import HackathonPitchModal from './components/HackathonPitchModal';
+import AuthScreen from './components/AuthScreen';
 import { INITIAL_PARCELS } from './data/parcelsData';
 import './App.css';
 
@@ -18,12 +19,33 @@ export default function App() {
   const [language, setLanguage] = useState('EN'); // 'EN' | 'HI'
   const [isPitchOpen, setIsPitchOpen] = useState(false);
   const [isProposalOpen, setIsProposalOpen] = useState(false);
+  
+  const [user, setUser] = useState(() => {
+    const saved = localStorage.getItem('bhoomidrishti_current_user');
+    return saved ? JSON.parse(saved) : null;
+  });
 
   const handleAddProposal = (newParcel) => {
     setParcels(prev => [newParcel, ...prev]);
     setSelectedParcel(newParcel);
     setActiveModule('gis');
   };
+
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('bhoomidrishti_current_user');
+  };
+
+  if (!user) {
+    return (
+      <AuthScreen
+        onLoginSuccess={(loggedInUser) => {
+          setUser(loggedInUser);
+          localStorage.setItem('bhoomidrishti_current_user', JSON.stringify(loggedInUser));
+        }}
+      />
+    );
+  }
 
   return (
     <div className="bhoomidrishti-app">
@@ -35,6 +57,8 @@ export default function App() {
         setLanguage={setLanguage}
         onOpenPitch={() => setIsPitchOpen(true)}
         onOpenProposal={() => setIsProposalOpen(true)}
+        user={user}
+        onLogout={handleLogout}
       />
 
       {/* Main Module Viewport */}

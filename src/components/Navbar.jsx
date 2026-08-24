@@ -1,7 +1,7 @@
 import React from 'react';
-import { MapPin, Cpu, Activity, ShieldCheck, Globe, Presentation, BarChart3, PlusCircle, Smartphone } from 'lucide-react';
+import { MapPin, Cpu, Activity, ShieldCheck, Globe, Presentation, BarChart3, PlusCircle, Smartphone, LogOut } from 'lucide-react';
 
-export default function Navbar({ activeModule, setActiveModule, language, setLanguage, onOpenPitch, onOpenProposal }) {
+export default function Navbar({ activeModule, setActiveModule, language, setLanguage, onOpenPitch, onOpenProposal, user, onLogout }) {
   return (
     <header className="navbar-header">
       <div className="navbar-container">
@@ -94,6 +94,26 @@ export default function Navbar({ activeModule, setActiveModule, language, setLan
             <Presentation className="pitch-icon" />
             <span>SIH Pitch</span>
           </button>
+
+          {/* User profile & Logout */}
+          {user && (
+            <div className="user-profile-badge">
+              <div className="user-avatar" title={user.name}>
+                {user.name ? user.name[0].toUpperCase() : 'U'}
+              </div>
+              <div className="user-details">
+                <span className="user-name-label">{user.name}</span>
+                <span className="user-role-label">{user.role}</span>
+              </div>
+              <button 
+                className="logout-icon-btn" 
+                onClick={onLogout} 
+                title="Log Out / लॉग आउट"
+              >
+                <LogOut size={16} />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </header>
