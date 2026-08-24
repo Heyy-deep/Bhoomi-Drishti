@@ -12,6 +12,9 @@ export default function NationalMisDashboard({ parcels, language }) {
     setTimeout(() => setExportNotice(null), 4000);
   };
 
+  const availableStates = Array.from(new Set(parcels.map(p => p.state).filter(Boolean)));
+  const filteredParcels = parcels.filter(p => selectedState === 'ALL' || p.state === selectedState);
+
   return (
     <div className="module-layout">
       {/* Executive Header Banner */}
@@ -48,13 +51,13 @@ export default function NationalMisDashboard({ parcels, language }) {
         <div className="stat-card border-blue">
           <div className="stat-label">Land Area Notified vs Acquired</div>
           <div className="stat-val blue-text">{NATIONAL_AGGREGATES.totalAcquiredAreaHa} Ha</div>
-          <div className="stat-sub">Of {NATIONAL_AGGREGATES.totalNotifiedAreaHa} Ha Notified (64.3% Acquired)</div>
+          <div className="stat-sub">Of {NATIONAL_AGGREGATES.totalNotifiedAreaHa} Ha Notified (68.3% Acquired)</div>
         </div>
 
         <div className="stat-card border-gold">
           <div className="stat-label">Compensation Assessed vs Paid</div>
           <div className="stat-val gold-text">₹{NATIONAL_AGGREGATES.totalCompensationPaidCr} Cr</div>
-          <div className="stat-sub">Of ₹{NATIONAL_AGGREGATES.totalCompensationAssessedCr} Cr Assessed (68.8% Paid via DBT)</div>
+          <div className="stat-sub">Of ₹{NATIONAL_AGGREGATES.totalCompensationAssessedCr} Cr Assessed (73.4% Paid via DBT)</div>
         </div>
 
         <div className="stat-card border-purple">
@@ -66,7 +69,7 @@ export default function NationalMisDashboard({ parcels, language }) {
         <div className="stat-card border-green">
           <div className="stat-label">R&R Housing Allotment</div>
           <div className="stat-val green-text">{NATIONAL_AGGREGATES.rrHousingAllottedCount} Plots</div>
-          <div className="stat-sub">83.1% Displaced Families Relocated</div>
+          <div className="stat-sub">82.1% Displaced Families Relocated</div>
         </div>
 
         <div className="stat-card border-amber">
@@ -86,8 +89,9 @@ export default function NationalMisDashboard({ parcels, language }) {
               <Filter className="icon-xs" />
               <select value={selectedState} onChange={e => setSelectedState(e.target.value)}>
                 <option value="ALL">All States</option>
-                <option value="Maharashtra">Maharashtra</option>
-                <option value="Gujarat">Gujarat</option>
+                {availableStates.map(st => (
+                  <option key={st} value={st}>{st}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -105,7 +109,7 @@ export default function NationalMisDashboard({ parcels, language }) {
               </tr>
             </thead>
             <tbody>
-              {parcels.map(parcel => (
+              {filteredParcels.map(parcel => (
                 <tr key={parcel.id}>
                   <td>
                     <strong>{parcel.id}</strong>

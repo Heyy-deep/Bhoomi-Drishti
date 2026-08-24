@@ -1,26 +1,47 @@
 import React, { useState } from 'react';
 import { X, Send, MapPin, FileUp, CheckCircle, Building } from 'lucide-react';
+import { WEST_BENGAL_DISTRICTS } from '../data/parcelsData';
 
 export default function ProposalSubmissionModal({ isOpen, onClose, onAddProposal }) {
   const [projectTitle, setProjectTitle] = useState('');
   const [agencyName, setAgencyName] = useState('NHAI (National Highways Authority of India)');
-  const [district, setDistrict] = useState('Nagpur');
+  const [selectedState, setSelectedState] = useState('West Bengal');
+  const [district, setDistrict] = useState('Kolkata');
   const [areaHa, setAreaHa] = useState('5.40');
   const [khasraList, setKhasraList] = useState('112/1, 112/2, 114/A');
   const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
 
+  const handleStateChange = (e) => {
+    const st = e.target.value;
+    setSelectedState(st);
+    if (st === 'West Bengal') setDistrict('Kolkata');
+    else if (st === 'Maharashtra') setDistrict('Nagpur');
+    else if (st === 'Gujarat') setDistrict('Ahmedabad');
+    else if (st === 'Karnataka') setDistrict('Bengaluru Urban');
+    else if (st === 'Uttar Pradesh') setDistrict('Gautam Buddha Nagar');
+  };
+
+  const getDistrictsForState = () => {
+    if (selectedState === 'West Bengal') return WEST_BENGAL_DISTRICTS;
+    if (selectedState === 'Maharashtra') return ['Nagpur', 'Pune', 'Thane', 'Mumbai City', 'Mumbai Suburban', 'Nashik', 'Chhatrapati Sambhajinagar'];
+    if (selectedState === 'Gujarat') return ['Ahmedabad', 'Surat', 'Vadodara', 'Rajkot', 'Gandhinagar'];
+    if (selectedState === 'Karnataka') return ['Bengaluru Urban', 'Bengaluru Rural', 'Mysuru', 'Dakshina Kannada'];
+    if (selectedState === 'Uttar Pradesh') return ['Gautam Buddha Nagar', 'Lucknow', 'Varanasi', 'Kanpur Nagar', 'Agra'];
+    return ['Kolkata', 'Nagpur', 'Pune'];
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newParcel = {
-      id: `LND-MH-2026-0${Math.floor(100 + Math.random() * 900)}`,
+      id: `LND-WB-2026-0${Math.floor(100 + Math.random() * 900)}`,
       khasraNo: khasraList.split(',')[0] || '112/1',
       ownerName: "Submitted Proposal (Under Scrutiny)",
       ownerContact: "+91 98000 00000",
       village: "Multi-Village Corridor",
       district,
-      state: "Maharashtra",
+      state: selectedState,
       project: projectTitle || "New Infrastructure Corridor Proposal",
       areaAcquired: `${areaHa} Ha`,
       landType: "Mixed Land (Agricultural/Commercial)",
@@ -115,23 +136,23 @@ export default function ProposalSubmissionModal({ isOpen, onClose, onAddProposal
 
               <div className="pitch-grid-2">
                 <div className="input-group">
-                  <label>District:</label>
-                  <select value={district} onChange={e => setDistrict(e.target.value)}>
-                    <option value="Nagpur">Nagpur</option>
-                    <option value="Pune">Pune</option>
-                    <option value="Thane">Thane</option>
+                  <label>State:</label>
+                  <select value={selectedState} onChange={handleStateChange}>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
                   </select>
                 </div>
 
                 <div className="input-group">
-                  <label>Total Land Area (Hectares):</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    value={areaHa}
-                    onChange={e => setAreaHa(e.target.value)}
-                    required
-                  />
+                  <label>District:</label>
+                  <select value={district} onChange={e => setDistrict(e.target.value)}>
+                    {getDistrictsForState().map(d => (
+                      <option key={d} value={d}>{d}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
 

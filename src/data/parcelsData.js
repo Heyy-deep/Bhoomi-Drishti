@@ -1,18 +1,45 @@
 export const NATIONAL_AGGREGATES = {
-  totalNotifiedAreaHa: 4850.5,
-  totalAcquiredAreaHa: 3120.2,
-  totalCompensationAssessedCr: 450.8,
-  totalCompensationPaidCr: 310.4,
-  affectedFamiliesCount: 3850,
-  displacedFamiliesCount: 1420,
-  rrHousingAllottedCount: 1180,
-  possessionHandedOverPct: 68,
-  timelineSlaAdherencePct: 82,
-  activeProjectsCount: 14,
-  statesCoveredCount: 8
+  totalNotifiedAreaHa: 6120.8,
+  totalAcquiredAreaHa: 4180.5,
+  totalCompensationAssessedCr: 620.4,
+  totalCompensationPaidCr: 455.2,
+  affectedFamiliesCount: 4920,
+  displacedFamiliesCount: 1840,
+  rrHousingAllottedCount: 1510,
+  possessionHandedOverPct: 72,
+  timelineSlaAdherencePct: 85,
+  activeProjectsCount: 19,
+  statesCoveredCount: 9
 };
 
+export const WEST_BENGAL_DISTRICTS = [
+  "Kolkata",
+  "Howrah",
+  "Hooghly",
+  "North 24 Parganas",
+  "South 24 Parganas",
+  "Paschim Medinipur",
+  "Purba Medinipur",
+  "Bankura",
+  "Purulia",
+  "Jhargram",
+  "Purba Bardhaman",
+  "Paschim Bardhaman",
+  "Birbhum",
+  "Nadia",
+  "Murshidabad",
+  "Malda",
+  "Uttar Dinajpur",
+  "Dakshin Dinajpur",
+  "Jalpaiguri",
+  "Alipurduar",
+  "Cooch Behar",
+  "Darjeeling",
+  "Kalimpong"
+];
+
 export const API_INTEGRATIONS_STATUS = [
+  { name: "Banglarbhumi / WB Land & Land Reforms API", status: "CONNECTED", latency: "52ms", endpoint: "banglarbhumi.gov.in/api/khatian" },
   { name: "Mahabhulekh / State Land Records API", status: "CONNECTED", latency: "42ms", endpoint: "api.mahabhulekh.gov.in/v2/khasra" },
   { name: "Bhuvan ISRO Spatial Cadastral Map Service", status: "CONNECTED", latency: "88ms", endpoint: "bhuvan-vec1.nrsc.gov.in/wms" },
   { name: "Sub-Registrar Office (SRO) Encumbrance API", status: "CONNECTED", latency: "115ms", endpoint: "igrmahashta.gov.in/api/encumbrance" },
@@ -541,6 +568,315 @@ export const INITIAL_PARCELS = [
     ],
     timeline: [
       { date: "2026-02-05", stage: "Section 4", note: "UP Gazette Section 4 notification issued for Jewar Runway 2", officer: "ADM Noida" }
+    ]
+  },
+  {
+    id: "LND-WB-2026-0501",
+    khasraNo: "304/1A",
+    ownerName: "Subhash Chandra Mukhopadhyay",
+    ownerContact: "+91 98301 44521",
+    village: "Salt Lake Sector V / New Town",
+    district: "Kolkata",
+    state: "West Bengal",
+    project: "Kolkata Metro Airport-New Town Line Expansion",
+    areaAcquired: "1.45 Ha",
+    landType: "Commercial / Infrastructure Zone",
+    stage: "Disbursement",
+    stageCode: 4,
+    stageProgress: 100,
+    possessionStatus: "Possession Handed Over (100%)",
+    affectedFamilies: 3,
+    displacedFamilies: 0,
+    rrStatus: "Commercial Award Disbursed",
+    coordinates: [22.5726, 88.4331],
+    polygon: [
+      [22.5740, 88.4310],
+      [22.5755, 88.4350],
+      [22.5710, 88.4360],
+      [22.5700, 88.4320]
+    ],
+    compensationTotal: 28500000,
+    disbursedAmount: 28500000,
+    assignedOfficer: "Shri A. K. Banerjee (SLAO Kolkata)",
+    officerId: "OFF-KOL-01",
+    slaStatus: "HEALTHY",
+    daysInStage: 10,
+    slaDeadlineDays: 30,
+    riskScore: 14,
+    riskLevel: "LOW",
+    riskFactors: [],
+    documents: {
+      titleDeed: "VERIFIED",
+      sevenTwelveExtract: "VERIFIED",
+      encumbranceCert: "VERIFIED",
+      bankDetails: "VERIFIED",
+      socialImpactReport: "VERIFIED"
+    },
+    docRepository: [
+      { name: "Kolkata_Metro_Sec4_Gazette.pdf", version: "v1.0", sha256: "77a8819c...d901", date: "2025-07-15", uploader: "SLAO Kolkata", eSign: "VERIFIED" },
+      { name: "Banglarbhumi_Khatian_Extract_304.pdf", version: "v1.0", sha256: "33b1109a...e412", date: "2025-08-20", uploader: "WB Land Reforms Dept", eSign: "VERIFIED" },
+      { name: "DBT_Payment_Treasury_Receipt.pdf", version: "v1.0", sha256: "9901234b...aa10", date: "2026-02-14", uploader: "Treasury Kolkata", eSign: "VERIFIED" }
+    ],
+    timeline: [
+      { date: "2025-07-15", stage: "Section 4", note: "Section 4 Gazette Notification published for Metro Line Expansion", officer: "SLAO Kolkata" },
+      { date: "2025-10-10", stage: "Section 11", note: "SIA Public Hearing completed without dispute", officer: "SLAO Kolkata" },
+      { date: "2025-12-20", stage: "Section 19", note: "Section 19 Final Award Declaration approved by Collector Kolkata", officer: "Collector Kolkata" },
+      { date: "2026-02-14", stage: "Disbursement", note: "100% Compensation transferred via Direct Benefit Transfer (DBT)", officer: "Treasury Kolkata" }
+    ]
+  },
+  {
+    id: "LND-WB-2026-0502",
+    khasraNo: "512/8B",
+    ownerName: "Debabrata Sengupta & Co-sharers",
+    ownerContact: "+91 94330 77182",
+    village: "Taratala / Garden Reach",
+    district: "Kolkata",
+    state: "West Bengal",
+    project: "Kolkata Port Syama Prasad Mookerjee Industrial Link",
+    areaAcquired: "2.80 Ha",
+    landType: "Industrial / Warehousing Zone",
+    stage: "Section 19",
+    stageCode: 3,
+    stageProgress: 80,
+    possessionStatus: "Final Declaration Approved (80%)",
+    affectedFamilies: 5,
+    displacedFamilies: 1,
+    rrStatus: "Relocation Plot Allotted in Dankuni Hub",
+    coordinates: [22.5333, 88.3167],
+    polygon: [
+      [22.5350, 88.3140],
+      [22.5370, 88.3180],
+      [22.5320, 88.3195],
+      [22.5305, 88.3150]
+    ],
+    compensationTotal: 34000000,
+    disbursedAmount: 20000000,
+    assignedOfficer: "Smt. Sriparna Roy (Dy. Collector Land Revenue)",
+    officerId: "OFF-KOL-02",
+    slaStatus: "HEALTHY",
+    daysInStage: 24,
+    slaDeadlineDays: 45,
+    riskScore: 28,
+    riskLevel: "LOW",
+    riskFactors: [
+      "Sub-registrar encumbrance clearance verified at Kolkata SRO"
+    ],
+    documents: {
+      titleDeed: "VERIFIED",
+      sevenTwelveExtract: "VERIFIED",
+      encumbranceCert: "VERIFIED",
+      bankDetails: "VERIFIED",
+      socialImpactReport: "VERIFIED"
+    },
+    docRepository: [
+      { name: "Taratala_PortLink_Sec19.pdf", version: "v2.0", sha256: "88b0123c...e901", date: "2026-01-30", uploader: "Dy. Collector Kolkata", eSign: "VERIFIED" }
+    ],
+    timeline: [
+      { date: "2025-08-10", stage: "Section 4", note: "WB Gazette Preliminary Notification issued", officer: "Dy. Collector Kolkata" },
+      { date: "2025-11-12", stage: "Section 11", note: "Public hearing & joint boundary verification completed", officer: "Dy. Collector Kolkata" },
+      { date: "2026-01-30", stage: "Section 19", note: "Section 19 Award Notice published", officer: "Collector Kolkata" }
+    ]
+  },
+  {
+    id: "LND-WB-2026-0503",
+    khasraNo: "188/4",
+    ownerName: "Partha Sarathi Das",
+    ownerContact: "+91 98312 99001",
+    village: "Dum Dum / Airport Gate 1",
+    district: "Kolkata",
+    state: "West Bengal",
+    project: "Kolkata Airport Flyover Expansion & Elevated Corridor",
+    areaAcquired: "0.90 Ha",
+    landType: "Urban Commercial / Residential",
+    stage: "Section 11",
+    stageCode: 2,
+    stageProgress: 50,
+    possessionStatus: "SIA Hearing & Valuation Dispute (50%)",
+    affectedFamilies: 9,
+    displacedFamilies: 6,
+    rrStatus: "R&R Package Requested at High Court Bench",
+    coordinates: [22.6450, 88.4200],
+    polygon: [
+      [22.6465, 88.4180],
+      [22.6480, 88.4220],
+      [22.6435, 88.4230],
+      [22.6425, 88.4190]
+    ],
+    compensationTotal: 42000000,
+    disbursedAmount: 0,
+    assignedOfficer: "Shri A. K. Banerjee (SLAO Kolkata)",
+    officerId: "OFF-KOL-01",
+    slaStatus: "BREACHED",
+    daysInStage: 72,
+    slaDeadlineDays: 60,
+    riskScore: 82,
+    riskLevel: "CRITICAL",
+    riskFactors: [
+      "High valuation objection filed by local market association",
+      "SLA Exceeded by 12 Days in Section 11 Hearing"
+    ],
+    documents: {
+      titleDeed: "VERIFIED",
+      sevenTwelveExtract: "VERIFIED",
+      encumbranceCert: "PENDING",
+      bankDetails: "IN_PROGRESS",
+      socialImpactReport: "REJECTED"
+    },
+    docRepository: [
+      { name: "DumDum_Airport_Objection_Petition.pdf", version: "v1.2", sha256: "991244ab...33e1", date: "2025-12-04", uploader: " Dum Dum Market Assoc", eSign: "PENDING" }
+    ],
+    timeline: [
+      { date: "2025-09-01", stage: "Section 4", note: "Section 4 notification published", officer: "SLAO Kolkata" },
+      { date: "2025-12-04", stage: "Section 11", note: "Public hearing adjourned due to commercial valuation petition", officer: "SLAO Kolkata" }
+    ]
+  },
+  {
+    id: "LND-WB-2026-0504",
+    khasraNo: "720/3",
+    ownerName: "Tapan Kumar Ghosh",
+    ownerContact: "+91 97480 33411",
+    village: "Dankuni Link / Bally",
+    district: "Howrah",
+    state: "West Bengal",
+    project: "Golden Quadrilateral Dankuni Freight Logistics Terminal",
+    areaAcquired: "4.10 Ha",
+    landType: "Agricultural (Multi-crop)",
+    stage: "Section 4",
+    stageCode: 1,
+    stageProgress: 35,
+    possessionStatus: "Preliminary Notification (35%)",
+    affectedFamilies: 6,
+    displacedFamilies: 2,
+    rrStatus: "SIA Study Published",
+    coordinates: [22.6500, 88.3000],
+    polygon: [
+      [22.6520, 88.2980],
+      [22.6540, 88.3020],
+      [22.6490, 88.3035],
+      [22.6475, 88.2995]
+    ],
+    compensationTotal: 19500000,
+    disbursedAmount: 0,
+    assignedOfficer: "Shri B. N. Dutta (SLAO Howrah)",
+    officerId: "OFF-HWH-01",
+    slaStatus: "HEALTHY",
+    daysInStage: 16,
+    slaDeadlineDays: 30,
+    riskScore: 25,
+    riskLevel: "LOW",
+    riskFactors: [],
+    documents: {
+      titleDeed: "VERIFIED",
+      sevenTwelveExtract: "VERIFIED",
+      encumbranceCert: "VERIFIED",
+      bankDetails: "IN_PROGRESS",
+      socialImpactReport: "IN_PROGRESS"
+    },
+    docRepository: [
+      { name: "Dankuni_Freight_Sec4.pdf", version: "v1.0", sha256: "0012998a...b102", date: "2026-02-02", uploader: "SLAO Howrah", eSign: "VERIFIED" }
+    ],
+    timeline: [
+      { date: "2026-02-02", stage: "Section 4", note: "Section 4 notice gazetted for Dankuni Terminal", officer: "SLAO Howrah" }
+    ]
+  },
+  {
+    id: "LND-WB-2026-0505",
+    khasraNo: "410/A",
+    ownerName: "Anupam Roy",
+    ownerContact: "+91 98040 12345",
+    village: "Barasat",
+    district: "North 24 Parganas",
+    state: "West Bengal",
+    project: "NH-34 Barasat-Krishnanagar 4-Laning Highway",
+    areaAcquired: "3.15 Ha",
+    landType: "Agricultural / Semi-Urban",
+    stage: "Section 19",
+    stageCode: 3,
+    stageProgress: 75,
+    possessionStatus: "Award Approved (75%)",
+    affectedFamilies: 4,
+    displacedFamilies: 1,
+    rrStatus: "Housing Relocation Approved",
+    coordinates: [22.7200, 88.4800],
+    polygon: [
+      [22.7220, 88.4780],
+      [22.7240, 88.4820],
+      [22.7190, 88.4835],
+      [22.7175, 88.4795]
+    ],
+    compensationTotal: 16800000,
+    disbursedAmount: 16800000,
+    assignedOfficer: "Smt. M. Chatterjee (SLAO North 24 Parganas)",
+    officerId: "OFF-N24-01",
+    slaStatus: "HEALTHY",
+    daysInStage: 20,
+    slaDeadlineDays: 45,
+    riskScore: 18,
+    riskLevel: "LOW",
+    riskFactors: [],
+    documents: {
+      titleDeed: "VERIFIED",
+      sevenTwelveExtract: "VERIFIED",
+      encumbranceCert: "VERIFIED",
+      bankDetails: "VERIFIED",
+      socialImpactReport: "VERIFIED"
+    },
+    docRepository: [
+      { name: "Barasat_NH34_Sec19.pdf", version: "v1.0", sha256: "5510293a...c881", date: "2026-01-20", uploader: "SLAO N24P", eSign: "VERIFIED" }
+    ],
+    timeline: [
+      { date: "2025-08-15", stage: "Section 4", note: "NH34 expansion notice gazetted", officer: "SLAO N24P" },
+      { date: "2026-01-20", stage: "Section 19", note: "Section 19 declaration issued", officer: "Collector N24P" }
+    ]
+  },
+  {
+    id: "LND-WB-2026-0506",
+    khasraNo: "602/1",
+    ownerName: "Bimal Mondal",
+    ownerContact: "+91 99031 88765",
+    village: "Diamond Harbour Road / Joka",
+    district: "South 24 Parganas",
+    state: "West Bengal",
+    project: "Kolkata-Diamond Harbour Economic Corridor",
+    areaAcquired: "2.60 Ha",
+    landType: "Agricultural (Coastal / Irrigated)",
+    stage: "Disbursement",
+    stageCode: 4,
+    stageProgress: 100,
+    possessionStatus: "Possession Handed Over (100%)",
+    affectedFamilies: 3,
+    displacedFamilies: 0,
+    rrStatus: "Direct Payment Completed",
+    coordinates: [22.3500, 88.1900],
+    polygon: [
+      [22.3520, 88.1880],
+      [22.3540, 88.1920],
+      [22.3490, 88.1935],
+      [22.3475, 88.1895]
+    ],
+    compensationTotal: 15200000,
+    disbursedAmount: 15200000,
+    assignedOfficer: "Shri R. N. Halder (Dy. Collector S24P)",
+    officerId: "OFF-S24-01",
+    slaStatus: "HEALTHY",
+    daysInStage: 8,
+    slaDeadlineDays: 30,
+    riskScore: 12,
+    riskLevel: "LOW",
+    riskFactors: [],
+    documents: {
+      titleDeed: "VERIFIED",
+      sevenTwelveExtract: "VERIFIED",
+      encumbranceCert: "VERIFIED",
+      bankDetails: "VERIFIED",
+      socialImpactReport: "VERIFIED"
+    },
+    docRepository: [
+      { name: "Joka_DiamondHarbour_Receipt.pdf", version: "v1.0", sha256: "8821903c...d101", date: "2026-02-10", uploader: "Treasury S24P", eSign: "VERIFIED" }
+    ],
+    timeline: [
+      { date: "2025-07-20", stage: "Section 4", note: "Corridor notice gazetted", officer: "Dy. Collector S24P" },
+      { date: "2026-02-10", stage: "Disbursement", note: "DBT transfer executed", officer: "Treasury S24P" }
     ]
   }
 ];

@@ -81,9 +81,9 @@ export default function PublicPortalModule({ parcels, language }) {
           </div>
           <div className="search-hints">
             <span>Try sample searches:</span>
-            <button type="button" onClick={() => { setSearchQuery('142/1A'); setSearchedParcel(parcels[0]); setSearchAttempted(true); }}>Khasra 142/1A (Nagpur)</button>
-            <button type="button" onClick={() => { setSearchQuery('88/3B'); setSearchedParcel(parcels[1]); setSearchAttempted(true); }}>Khasra 88/3B (Disbursed)</button>
-            <button type="button" onClick={() => { setSearchQuery('210/4'); setSearchedParcel(parcels[2]); setSearchAttempted(true); }}>Khasra 210/4 (Umred)</button>
+            <button type="button" onClick={() => { const p = parcels.find(x => x.khasraNo === '304/1A'); setSearchQuery('304/1A'); setSearchedParcel(p || parcels[0]); setSearchAttempted(true); }}>Khasra 304/1A (Kolkata Metro)</button>
+            <button type="button" onClick={() => { const p = parcels.find(x => x.khasraNo === '512/8B'); setSearchQuery('512/8B'); setSearchedParcel(p || parcels[1]); setSearchAttempted(true); }}>Khasra 512/8B (Kolkata Port)</button>
+            <button type="button" onClick={() => { const p = parcels.find(x => x.khasraNo === '142/1A'); setSearchQuery('142/1A'); setSearchedParcel(p || parcels[0]); setSearchAttempted(true); }}>Khasra 142/1A (Nagpur)</button>
           </div>
         </form>
       </div>
