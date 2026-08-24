@@ -79,16 +79,6 @@ export default function Navbar({ activeModule, setActiveModule, language, setLan
             <span>Submit Proposal</span>
           </button>
 
-          {/* Language Toggle */}
-          <button
-            className="lang-toggle-btn"
-            onClick={() => setLanguage(l => l === 'EN' ? 'HI' : 'EN')}
-            title="Switch Language / भाषा बदलें"
-          >
-            <Globe className="lang-icon" />
-            <span>{language === 'EN' ? 'HI' : 'EN'}</span>
-          </button>
-
           {/* User profile & Logout */}
           {user && (
             <div className={`user-profile-badge ${activeModule === 'profile' ? 'active' : ''}`}>

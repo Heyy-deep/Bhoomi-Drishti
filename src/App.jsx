@@ -52,8 +52,6 @@ export default function App() {
       <Navbar
         activeModule={activeModule}
         setActiveModule={setActiveModule}
-        language={language}
-        setLanguage={setLanguage}
         onOpenProposal={() => setIsProposalOpen(true)}
         user={user}
         onLogout={handleLogout}
