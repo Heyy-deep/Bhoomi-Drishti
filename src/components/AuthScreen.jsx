@@ -179,18 +179,46 @@ export default function AuthScreen({ onLoginSuccess }) {
 
   return (
     <div className="auth-container">
-      {/* Background visual element */}
-      <div className="auth-glow-bg"></div>
-      
+      {/* Left Hero Panel */}
+      <div className="auth-glow-bg">
+        <div className="auth-hero-grid-bg" />
+        <div className="auth-hero-content">
+          <div className="auth-hero-icon">
+            <MapPin size={28} />
+          </div>
+          <h1 className="auth-hero-title">
+            Bhoomi<br /><span>Drishti</span>
+          </h1>
+          <p className="auth-hero-sub">
+            National Land Acquisition &amp; Management Digital Platform — powering transparent, data-driven governance under RFCTLARR Act 2013.
+          </p>
+          <div className="auth-hero-stats">
+            <div className="auth-hero-stat">
+              <span className="auth-stat-val">19+</span>
+              <span className="auth-stat-lbl">Active Projects</span>
+            </div>
+            <div className="auth-hero-stat">
+              <span className="auth-stat-val">9</span>
+              <span className="auth-stat-lbl">States Covered</span>
+            </div>
+            <div className="auth-hero-stat">
+              <span className="auth-stat-val">₹620Cr</span>
+              <span className="auth-stat-lbl">Compensation Tracked</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Form Panel */}
       <div className="auth-card">
         {/* Logo and Header */}
         <div className="auth-header">
           <div className="auth-brand-icon">
             <MapPin className="icon-main" />
           </div>
-          <h1 className="auth-title">BhoomiDrishti</h1>
+          <h2 className="auth-title">Welcome back</h2>
           <p className="auth-subtitle">
-            National Land Acquisition & Management Platform
+            Sign in to your BhoomiDrishti account
           </p>
         </div>
 
