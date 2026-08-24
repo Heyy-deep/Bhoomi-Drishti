@@ -1,0 +1,101 @@
+import React from 'react';
+import { MapPin, Cpu, Activity, ShieldCheck, Globe, Presentation, BarChart3, PlusCircle, Smartphone } from 'lucide-react';
+
+export default function Navbar({ activeModule, setActiveModule, language, setLanguage, onOpenPitch, onOpenProposal }) {
+  return (
+    <header className="navbar-header">
+      <div className="navbar-container">
+        {/* Brand Section */}
+        <div className="brand-section">
+          <div className="brand-icon">
+            <MapPin className="icon-main" />
+          </div>
+          <div>
+            <div className="brand-title">
+              BhoomiDrishti <span className="brand-tag">DPI</span>
+            </div>
+            <div className="brand-subtitle">
+              {language === 'HI' ? 'राष्ट्रीय भूमि अधिग्रहण एवं प्रबंधन डिजिटल प्रणाली' : 'National Land Acquisition & Management Platform'}
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation Tabs */}
+        <nav className="nav-tabs">
+          <button
+            className={`nav-tab ${activeModule === 'mis' ? 'active' : ''}`}
+            onClick={() => setActiveModule('mis')}
+          >
+            <BarChart3 className="tab-icon" />
+            <span>{language === 'HI' ? 'एमआईएस डैशबोर्ड' : 'National MIS'}</span>
+          </button>
+
+          <button
+            className={`nav-tab ${activeModule === 'gis' ? 'active' : ''}`}
+            onClick={() => setActiveModule('gis')}
+          >
+            <MapPin className="tab-icon" />
+            <span>{language === 'HI' ? 'GIS एवं चरण ट्रैकर' : 'GIS & Stage Tracker'}</span>
+          </button>
+
+          <button
+            className={`nav-tab ${activeModule === 'workflow' ? 'active' : ''}`}
+            onClick={() => setActiveModule('workflow')}
+          >
+            <ShieldCheck className="tab-icon" />
+            <span>{language === 'HI' ? 'कार्यप्रवाह एवं SLA' : 'Workflow & SLAs'}</span>
+          </button>
+
+          <button
+            className={`nav-tab ${activeModule === 'predictor' ? 'active' : ''}`}
+            onClick={() => setActiveModule('predictor')}
+          >
+            <Activity className="tab-icon" />
+            <span>{language === 'HI' ? 'ML विलंब प्रेडिक्टर' : 'ML Delay Predictor'}</span>
+          </button>
+
+          <button
+            className={`nav-tab ${activeModule === 'mobile' ? 'active' : ''}`}
+            onClick={() => setActiveModule('mobile')}
+          >
+            <Smartphone className="tab-icon" />
+            <span>{language === 'HI' ? 'फील्ड मोबाइल ऐप' : 'Field Mobile App'}</span>
+          </button>
+
+          <button
+            className={`nav-tab ${activeModule === 'public' ? 'active' : ''}`}
+            onClick={() => setActiveModule('public')}
+          >
+            <Globe className="tab-icon" />
+            <span>{language === 'HI' ? 'जन पारदर्शिता पोर्टल' : 'Public Portal'}</span>
+          </button>
+        </nav>
+
+        {/* Right Controls */}
+        <div className="navbar-actions">
+          {/* Submit Proposal Trigger */}
+          <button className="proposal-btn" onClick={onOpenProposal}>
+            <PlusCircle className="pitch-icon" />
+            <span>Submit Proposal</span>
+          </button>
+
+          {/* Language Toggle */}
+          <button
+            className="lang-toggle-btn"
+            onClick={() => setLanguage(l => l === 'EN' ? 'HI' : 'EN')}
+            title="Switch Language / भाषा बदलें"
+          >
+            <Globe className="lang-icon" />
+            <span>{language === 'EN' ? 'HI' : 'EN'}</span>
+          </button>
+
+          {/* Hackathon Pitch Modal Trigger */}
+          <button className="pitch-btn" onClick={onOpenPitch}>
+            <Presentation className="pitch-icon" />
+            <span>SIH Pitch</span>
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}
