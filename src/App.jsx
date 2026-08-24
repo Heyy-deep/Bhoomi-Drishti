@@ -8,6 +8,7 @@ import MobileFieldInspectionModule from './components/MobileFieldInspectionModul
 import PublicPortalModule from './components/PublicPortalModule';
 import ProposalSubmissionModal from './components/ProposalSubmissionModal';
 import AuthScreen from './components/AuthScreen';
+import ProfileModule from './components/ProfileModule';
 import { INITIAL_PARCELS } from './data/parcelsData';
 import './App.css';
 
@@ -102,6 +103,14 @@ export default function App() {
         {activeModule === 'public' && (
           <PublicPortalModule
             parcels={parcels}
+            language={language}
+          />
+        )}
+
+        {activeModule === 'profile' && (
+          <ProfileModule
+            user={user}
+            setUser={setUser}
             language={language}
           />
         )}
